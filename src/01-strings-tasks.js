@@ -51,9 +51,10 @@ function getStringLength(value) {
  *   'John','Doe'      => 'Hello, John Doe!'
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
-} // TODO()
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
+  // throw new Error('Not implemented');
+}
 
 /**
  * Extracts a name from template string 'Hello, First_Name Last_Name!'.
@@ -65,9 +66,9 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
-} // TODO()
+function extractNameFromTemplate(value) {
+  return value.substring(7, value.length - 1);
+}
 
 
 /**
@@ -110,9 +111,9 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString(/* value, count */) {
-  throw new Error('Not implemented');
-} // TODO()
+function repeatString(value, count) {
+  return value.repeat(count);
+}
 
 /**
  * Remove the first occurrence of string inside another string
@@ -270,9 +271,29 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
-} // TODO()
+function getCardId(value) {
+  let res = 0;
+  if (value[0] === 'A') res = 0;
+  else if (value[0] === 'J') res = 10;
+  else if (value[0] === 'Q') res = 11;
+  else if (value[0] === 'K') res = 12;
+  else if (value.length === 2) {
+    res = Number(value[0]) - 1;
+  } else {
+    res = Number(value.substr(0, 2)) - 1;
+  }
+  if (value.length === 2) {
+    if (value[1] === '♦') res += 13;
+    if (value[1] === '♥') res += 26;
+    if (value[1] === '♠') res += 39;
+  } else {
+    if (value[2] === '♦') res += 13;
+    if (value[2] === '♥') res += 26;
+    if (value[2] === '♠') res += 39;
+  }
+
+  return res;
+}
 
 
 module.exports = {

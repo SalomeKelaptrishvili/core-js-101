@@ -285,8 +285,10 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  if (num < 10) return num;
+
+  return getDigitalRoot((Math.floor(num / 10)) + (num % 10));
 }
 
 
@@ -354,6 +356,16 @@ function toNaryString(/* num, n */) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(/* pathes */) {
+  // let res = '';
+  // const arr = pathes.sort((a, b) => a.length - b.length);
+  // for (let i = 0; i < arr[0].length; i + 1) {
+  //   if (arr.every((v) => v.indexOf(arr[0][i]) !== -1)) {
+  //     res = res.concat(arr[0][i]);
+  //   } else {
+  //     return res;
+  //   }
+  // }
+  // return res;
   throw new Error('Not implemented');
 }
 

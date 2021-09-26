@@ -84,10 +84,8 @@ function getArrayOfPositives(arr) {
  *    [ 'cat, 'dog', 'raccoon' ] => [ 'cat', 'dog', 'raccoon' ]
  */
 function getArrayOfStrings(arr) {
-  function onlyStrings(value) {
-    return typeof value === 'string';
-  }
-  return arr.filter(onlyStrings);
+  const res = arr.filter((v) => typeof v === 'string');
+  return res;
 }
 
 /**
@@ -204,7 +202,7 @@ function getTail(arr, n) {
  */
 function toCsvText(/* arr */) {
   throw new Error('Not implemented');
-}
+} // TODO()
 
 /**
  * Transforms the numeric array into the according array of squares:
