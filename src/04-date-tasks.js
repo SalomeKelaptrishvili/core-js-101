@@ -53,12 +53,11 @@ function parseDataFromIso8601(value) {
  *    Date(2012,1,1)    => true
  *    Date(2015,1,1)    => false
  */
-function isLeapYear(/* date */) {
-  // if (date.year % 4 !== 0) return false;
-  // if (date.year % 100 !== 0) return true;
-  // if (date.year % 400 !== 0) return false;
-  // return true;
-  throw new Error('Not implemented');
+function isLeapYear(date) {
+  if (date.getFullYear() % 4 !== 0) return false;
+  if (date.getFullYear() % 100 !== 0) return true;
+  if (date.getFullYear() % 400 !== 0) return false;
+  return true;
 }
 
 /**
@@ -76,8 +75,18 @@ function isLeapYear(/* date */) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,10,0,0,250)     => "00:00:00.250"
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
-function timeSpanToString(/* startDate, endDate */) {
-  throw new Error('Not implemented');
+function timeSpanToString(startDate, endDate) {
+  let hours = endDate.getHours() - startDate.getHours();
+  if (hours < 10) hours = '0'.concat(hours);
+  let minutes = endDate.getMinutes() - startDate.getMinutes();
+  if (minutes < 10) minutes = '0'.concat(minutes);
+  let sec = endDate.getSeconds() - startDate.getSeconds();
+  if (sec < 10) sec = '0'.concat(sec);
+  let milsec = endDate.getMilliseconds() - startDate.getMilliseconds();
+  if (milsec < 10) milsec = '00'.concat(milsec);
+  else if (milsec < 100) milsec = '0'.concat(milsec);
+  const res = hours.concat(':', minutes, ':', sec, '.', milsec);
+  return res;
 }
 
 
@@ -98,6 +107,13 @@ function timeSpanToString(/* startDate, endDate */) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(/* date */) {
+  // const hours = date.getHours();
+  // const minutes = date.getMinutes();
+
+  // const hoursAnglePassed = hours * 60 * (Math.PI / 360) + minutes * (Math.PI / 360);
+  // const miutesAnglePassed = minutes * 6; // 15m = 90
+
+  // return Math.abs(miutesAnglePassed - hoursAnglePassed);
   throw new Error('Not implemented');
 }
 
