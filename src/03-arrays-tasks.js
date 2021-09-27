@@ -207,8 +207,9 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText(/* arr */) {
-  throw new Error('Not implemented');
+function toCsvText(arr) {
+  const csv = arr.join('\n');
+  return csv;
 } // TODO()
 
 /**
@@ -344,8 +345,10 @@ function getPositivesCount(arr) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const digits = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  const sorted = arr.sort((a, b) => digits.indexOf(a) - digits.indexOf(b));
+  return sorted;
 }
 
 /**
@@ -441,16 +444,18 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  // const sorted = arr.sort((a, b) => {
-  //   if (a.country === b.country) {
-  //     return a.city - b.city;
-  //   }
-  //   return a.country - b.country;
-  // });
-  // return sorted;
-  throw new Error('Not implemented');
-} // TODO() veraferi ver gavige ak ra unda
+
+function sortCitiesArray(arr) {
+  return arr.sort((a, b) => {
+    if (a.country < b.country) return -1;
+    if (a.country === b.country) {
+      if (a.city < b.city) return -1;
+      if (a.city === b.city) return 0;
+      return 1;
+    }
+    return 1;
+  });
+}
 
 /**
  * Creates an indentity matrix of the specified size
@@ -470,19 +475,20 @@ function sortCitiesArray(/* arr */) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-// function recMatrix(matrix, n, k) {
-//   if (matrix.length === n) return matrix;
-//   const m = [];
-//   m.length = n;
-//   m[k] = 1;
-//   matrix.push(m);
-//   return recMatrix(matrix, n, k + 1);
-// }
-function getIdentityMatrix(/* n */) {
-  // const matrix = [];
-  // const k = 0;
-  // recMatrix(matrix, n, k);
-  throw new Error('Not implemented');
+function recMatrix(matrix, n, k) {
+  if (matrix.length === n) return matrix;
+  const matrixItem = [];
+  matrixItem.length = n;
+  matrixItem.fill(0);
+  matrixItem[k] = 1;
+  matrix.push(matrixItem);
+  return recMatrix(matrix, n, k + 1);
+}
+
+function getIdentityMatrix(n) {
+  const matrix = [];
+  const k = 0;
+  return recMatrix(matrix, n, k);
 }
 
 /**
