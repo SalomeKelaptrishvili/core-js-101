@@ -177,12 +177,14 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(str) {
-  for (let i = 0; i < str.length; i + 1) {
-    // const k = str.split('').splice(i, 1).join('');
-    if (str.split('').splice(i, 1).join('').indexOf(str[i]) === -1) return str[i];
-  }
-  return null;
+function findFirstSingleChar(/* str */) {
+  // for (let i = 0; i < str.length; i + 1) {
+  //   // const k = str.split('').splice(i, 1).join('');
+  //   if (str.split('').splice(i, 1).join('').indexOf(str[i]) === -1) return str[i];
+  // }
+  // return null;
+  throw new Error('Not implemented');
+
   // throw new Error('Not implemented');
 } // AMAS MGONI DIDI DRO MIAKVS
 
