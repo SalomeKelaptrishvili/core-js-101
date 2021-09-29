@@ -177,12 +177,13 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  // for (let i = 0; i < str.length; i + 1) {
-  //   if ((str.substring(i)).indexOf(str[i]) === -1) return str[i];
-  // }
-  // return null;
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  for (let i = 0; i < str.length; i + 1) {
+    // const k = str.split('').splice(i, 1).join('');
+    if (str.split('').splice(i, 1).join('').indexOf(str[i]) === -1) return str[i];
+  }
+  return null;
+  // throw new Error('Not implemented');
 } // AMAS MGONI DIDI DRO MIAKVS
 
 
@@ -209,6 +210,20 @@ function findFirstSingleChar(/* str */) {
  *
  */
 function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
+  // const res = [a, b].sort((x, y) => x - y);
+  // let ress = '';
+  // if (isStartIncluded) {
+  //   ress = '[';
+  // } else {
+  //   ress = '(';
+  // }
+  // ress += res;
+  // if (isEndIncluded) {
+  //   ress += ']';
+  // } else {
+  //   ress += ')';
+  // }
+  // return ress;
   throw new Error('Not implemented');
 }
 
@@ -360,7 +375,7 @@ function getCommonDirectoryPath(/* pathes */) {
   // const arr = pathes.sort((a, b) => a.length - b.length);
   // for (let i = 0; i < arr[0].length; i + 1) {
   //   if (arr.every((v) => v.indexOf(arr[0][i]) !== -1)) {
-  //     res = res.concat(arr[0][i]);
+  //     res += arr[0][i];
   //   } else {
   //     return res;
   //   }
